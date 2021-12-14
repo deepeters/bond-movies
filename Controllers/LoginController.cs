@@ -16,18 +16,18 @@ namespace BondMovies.Controllers
             return View("Login");
         }
 
-        public string Login(UserModel userModel)
+        public ActionResult Login(UserModel userModel)
         {
             SecurityService securityService = new SecurityService();
             Boolean success = securityService.Authenticate(userModel);
 
             if (success)
             {
-                return "Success Login";
+                return View("LoginSuccess", userModel);
             }
             else
             {
-                return "Login Failure";
+                return View("LoginFailure");
             }
         }
 
