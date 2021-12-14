@@ -30,10 +30,32 @@ namespace BondMovies.Services.Data
                 //create the command and parameter objects
                 SqlCommand command = new SqlCommand(queryString, connection);
 
+                //Associate @Username with user.username
                 command.Parameters.Add("@Username", System.Data.SqlDbType.VarChar, 50).Value = user.Username;
                 command.Parameters.Add("@Password", System.Data.SqlDbType.VarChar, 50).Value = user.Password;
-            }
 
+                //open the database and run the command
+                //anytime you have a chance of failure due to external factors, use try and catch.
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        success = true;
+                    }
+                    else
+                    {
+                        success = false;
+                    }
+                    reader.Close();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+            return success;
             //throw new NotImplementedException();
         }
     }
