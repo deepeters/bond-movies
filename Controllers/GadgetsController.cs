@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BondMovies.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,11 @@ namespace BondMovies.Controllers
         // GET: Gadgets
         public ActionResult Index()
         {
-            return View();
+            List<GadgetModel> gadgets = new List<GadgetModel>();
+
+            GadgetDAO gadgetDAO = new GadgetDAO();
+
+            return View("Index", gadgets);
         }
     }
 }
