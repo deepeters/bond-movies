@@ -19,5 +19,13 @@ namespace BondMovies.Controllers
 
             return View("Index", gadgets);
         }
+
+        public ActionResult Details(int id)
+        {
+            GadgetDAO gadgetDAO = new GadgetDAO();
+            GadgetModel gadget = gadgetDAO.FetchOne(id);
+
+            return View("Details", gadget);
+        }
     }
 }

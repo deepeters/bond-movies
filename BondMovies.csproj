@@ -173,6 +173,7 @@
     <Content Include="Views\Login\LoginSuccess.cshtml" />
     <Content Include="Views\Login\LoginFailure.cshtml" />
     <Content Include="Views\Gadgets\Index.cshtml" />
+    <Content Include="Views\Gadgets\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
