@@ -172,10 +172,10 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\LoginSuccess.cshtml" />
     <Content Include="Views\Login\LoginFailure.cshtml" />
+    <Content Include="Views\Gadgets\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Gadgets\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

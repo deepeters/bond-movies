@@ -17,8 +17,30 @@ namespace BondMovies.Data
             //access the database
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string sqlQuery = "SELECT * from [dbo].[Gadgets]";
+                string sqlQuery = "SELECT * from [dbo].[GadgetModels]";
+
+                SqlCommand command = new SqlCommand(sqlQuery, connection);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        //create a new gadget object and add it to the list.
+                        GadgetModel gadget = new GadgetModel();
+                        gadget.Id = reader.GetInt32(0);
+                        gadget.Name = reader.GetString(1);
+                        gadget.Description = reader.GetString(2);
+                        gadget.AppersIn = reader.GetString(3);
+                        gadget.WithThisActor = reader.GetString(4);
+
+                        returnList.Add(gadget);
+                    }
+                }
             }
+            return returnList;
         }
     }
 }

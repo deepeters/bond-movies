@@ -13,11 +13,11 @@ namespace BondMovies
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                name: "Login",
-                url: "{Login}",
-                defaults: new { controller = "Login", action = "Index", id = UrlParameter.Optional }
-            );
+            //routes.MapRoute(
+            //    name: "Login",
+            //    url: "{Login}",
+            //    defaults: new { controller = "Login", action = "Index", id = UrlParameter.Optional }
+            //);
 
             routes.MapRoute(
                 name: "Default",
