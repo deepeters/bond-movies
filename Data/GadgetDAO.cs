@@ -77,5 +77,34 @@ namespace BondMovies.Data
                 return gadget;
             }
         }
+
+        //create new
+        public int Create(GadgetModel gadgetModel)
+        {
+            //access the database
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string sqlQuery = "INSERT INTO [dbo].[GadgetModels] Values(@Name, @Description, @AppersIn, @WithThisActor)";
+
+                SqlCommand command = new SqlCommand(sqlQuery, connection);
+                command.Parameters.Add("@Name", System.Data.SqlDbType.VarChar, 1000).Value = gadgetModel.Name;
+                command.Parameters.Add("@Description", System.Data.SqlDbType.VarChar, 1000).Value = gadgetModel.Description;
+                command.Parameters.Add("@AppersIn", System.Data.SqlDbType.VarChar, 1000).Value = gadgetModel.AppersIn;
+                command.Parameters.Add("@WithThisActor", System.Data.SqlDbType.VarChar, 1000).Value = gadgetModel.WithThisActor;
+
+                connection.Open();
+                int newID = command.ExecuteNonQuery();
+
+                return newID;
+            }
+        }
+
+        //delete one
+
+        //update one
+
+        //search for one
+
+        //search for description
     }
 }

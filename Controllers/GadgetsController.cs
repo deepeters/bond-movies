@@ -27,5 +27,17 @@ namespace BondMovies.Controllers
 
             return View("Details", gadget);
         }
+        public ActionResult Create()
+        {
+            return View("GadgetForm");
+        }
+        public ActionResult ProcessCreate(GadgetModel gadgetModel)
+        {
+            //Save to DB
+            GadgetDAO gadgetDAO = new GadgetDAO();
+            gadgetDAO.Create(gadgetModel);
+
+            return View("Details", gadgetModel);
+        }
     }
 }
