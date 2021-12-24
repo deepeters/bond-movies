@@ -33,7 +33,7 @@ namespace BondMovies.Data
                         gadget.Id = reader.GetInt32(0);
                         gadget.Name = reader.GetString(1);
                         gadget.Description = reader.GetString(2);
-                        gadget.AppersIn = reader.GetString(3);
+                        gadget.AppearsIn = reader.GetString(3);
                         gadget.WithThisActor = reader.GetString(4);
 
                         returnList.Add(gadget);
@@ -69,7 +69,7 @@ namespace BondMovies.Data
                         gadget.Id = reader.GetInt32(0);
                         gadget.Name = reader.GetString(1);
                         gadget.Description = reader.GetString(2);
-                        gadget.AppersIn = reader.GetString(3);
+                        gadget.AppearsIn = reader.GetString(3);
                         gadget.WithThisActor = reader.GetString(4);
 
                     }
@@ -79,17 +79,34 @@ namespace BondMovies.Data
         }
 
         //create new
-        public int Create(GadgetModel gadgetModel)
+        public int CreateOrUpdate(GadgetModel gadgetModel)
         {
+            //If gadgetmodel.id <= 1 then create
+
+            //If gadgetmodel.id > 1 then update is meant
+
+
             //access the database
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string sqlQuery = "INSERT INTO [dbo].[GadgetModels] Values(@Name, @Description, @AppersIn, @WithThisActor)";
+                string sqlQuery = "";
+                if (gadgetModel.Id <= 0)
+                {
+                    //insert new
+                    sqlQuery = "INSERT INTO [dbo].[GadgetModels] Values(@Name, @Description, @AppearsIn, @WithThisActor)";
+                }
+                else
+                {
+                    //update existing
+                    sqlQuery = "UPDATE [dbo].[GadgetModels] SET Name = @Name, Description = @Description, AppearsIn = @AppearsIn, WithThisActor = @WithThisActor WHERE Id = @Id";
+                }
 
                 SqlCommand command = new SqlCommand(sqlQuery, connection);
+
+                command.Parameters.Add("@Id", System.Data.SqlDbType.VarChar, 1000).Value = gadgetModel.Id;
                 command.Parameters.Add("@Name", System.Data.SqlDbType.VarChar, 1000).Value = gadgetModel.Name;
                 command.Parameters.Add("@Description", System.Data.SqlDbType.VarChar, 1000).Value = gadgetModel.Description;
-                command.Parameters.Add("@AppersIn", System.Data.SqlDbType.VarChar, 1000).Value = gadgetModel.AppersIn;
+                command.Parameters.Add("@AppearsIn", System.Data.SqlDbType.VarChar, 1000).Value = gadgetModel.AppearsIn;
                 command.Parameters.Add("@WithThisActor", System.Data.SqlDbType.VarChar, 1000).Value = gadgetModel.WithThisActor;
 
                 connection.Open();

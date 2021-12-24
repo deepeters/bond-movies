@@ -33,10 +33,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.AppersIn, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.AppearsIn, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.AppersIn, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AppersIn, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.AppearsIn, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AppearsIn, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -47,6 +47,8 @@
                 @Html.ValidationMessageFor(model => model.WithThisActor, "", new { @class = "text-danger" })
             </div>
         </div>
+
+        <input type="hidden" name="Id" value="@Model.Id" />
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

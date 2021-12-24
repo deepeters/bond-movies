@@ -16,9 +16,9 @@ namespace BondMovies.Models
         public string Description { get; set; }
         [Required]
         [DisplayName ("Appears in this Movie")]
-        public string AppersIn { get; set; }
+        public string AppearsIn { get; set; }
         [Required]
-        [DisplayName("James Bond is Plyaed by")]
+        [DisplayName("James Bond is Played by")]
         public string WithThisActor { get; set; }
          
         public GadgetModel()
@@ -26,16 +26,16 @@ namespace BondMovies.Models
             Id = -1;
             Name = "Nameless";
             Description = "Nothing";
-            AppersIn = "Nowhere";
+            AppearsIn = "Nowhere";
             WithThisActor = "Noone";
         }
 
-        public GadgetModel(int id, string name, string description, string appersIn, string withThisActor)
+        public GadgetModel(int id, string name, string description, string appearsIn, string withThisActor)
         {
             Id = id;
             Name = name;
             Description = description;
-            AppersIn = appersIn;
+            AppearsIn = appearsIn;
             WithThisActor = withThisActor;
         }
     }
