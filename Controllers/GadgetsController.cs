@@ -40,6 +40,16 @@ namespace BondMovies.Controllers
             return View("GadgetForm", gadget);
         }
 
+        public ActionResult Delete(int id)
+        {
+            GadgetDAO gadgetDAO = new GadgetDAO();
+            gadgetDAO.Delete(id);
+
+            List<GadgetModel> gadgets = gadgetDAO.FetchAll();
+
+            return View("Index", gadgets);
+        }
+
         [HttpPost]
         public ActionResult ProcessCreate(GadgetModel gadgetModel)
         {

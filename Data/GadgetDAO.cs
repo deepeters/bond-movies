@@ -1,4 +1,5 @@
 ﻿using BondMovies.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
@@ -41,6 +42,25 @@ namespace BondMovies.Data
                 }
             }
             return returnList;
+        }
+
+        internal int Delete(int id)
+        {
+            //access the database
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                
+            string sqlQuery = "DELETE from [dbo].[GadgetModels] WHERE Id = @Id";
+
+            SqlCommand command = new SqlCommand(sqlQuery, connection);
+
+            command.Parameters.Add("@Id", System.Data.SqlDbType.VarChar, 1000).Value = id;
+
+            connection.Open();
+            int deletedID = command.ExecuteNonQuery();
+
+            return deletedID;
+            }
         }
 
         public GadgetModel FetchOne(int id)
