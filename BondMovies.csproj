@@ -175,6 +175,7 @@
     <Content Include="Views\Gadgets\Index.cshtml" />
     <Content Include="Views\Gadgets\Details.cshtml" />
     <Content Include="Views\Gadgets\GadgetForm.cshtml" />
+    <Content Include="Views\Gadgets\SearchForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
